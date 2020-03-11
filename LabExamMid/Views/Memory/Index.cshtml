@@ -1,0 +1,86 @@
+﻿@model IEnumerable<LabExamMid.Models.Memory>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <button>
+        @Html.ActionLink("Create New Memory", "Create")
+    </button>
+
+    <div style="float:right">
+        <button>
+            @Html.ActionLink("Logout", "Logout", "User")
+        </button>
+    </div>
+    <table class="table" border="0" width="50%" align="center">
+
+
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td colspan="3">
+
+                    <br />
+                </td>
+            </tr>
+
+            <tr style="background-color:lemonchiffon; border-top-left-radius:25px; border-top-right-radius:25px">
+                <td colspan="3">
+
+                    <hr />
+                </td>
+            </tr>
+            <tr style="background-color:lemonchiffon; border-top-left-radius:0px; border-top-right-radius:0px">
+                <td align="center">
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td align="center">
+                    @Html.DisplayFor(modelItem => item.LastModificationDate)
+                </td>
+                <td align="center">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+
+            </tr>
+            <tr style="background-color:lemonchiffon;">
+                <td colspan="3">
+                    <hr />
+                </td>
+            </tr>
+            <tr style="background-color:lemonchiffon; font-family:'Times New Roman', Times, serif; font-weight:bold;">
+                <td colspan="3" align="center">
+                    @Html.DisplayFor(modelItem => item.Story, new { style = "width:80%; height:auto; word-warp:break-word" })
+                </td>
+            </tr>
+            <tr style="background-color:lemonchiffon;">
+                <td colspan="3" align="center">
+                    <img src="@Url.Content("~/UserImages/"+item.PhotoPath)" style="width:50%; height:auto " />
+                </td>
+
+            </tr>
+
+            <tr style="background-color:lemonchiffon; border-bottom-left-radius:10px; border-bottom-right-radius:10px">
+                <td colspan="3">
+                    <hr />
+                </td>
+            </tr>
+        }
+
+
+    </table>
+
+
+</body>
+</html>
